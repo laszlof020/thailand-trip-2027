@@ -1,3 +1,4 @@
+import CityWidgets from './components/CityWidgets.jsx'
 import Countdown from './components/Countdown.jsx'
 import { TICKET_SALE } from './tripData.js'
 
@@ -42,6 +43,11 @@ export default function App() {
               </dd>
             </div>
           </dl>
+        </section>
+
+        <section className="card" aria-labelledby="cities-title">
+          <h2 id="cities-title">Helyi idő és időjárás</h2>
+          <CityWidgets />
         </section>
       </main>
 

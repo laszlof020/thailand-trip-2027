@@ -1,6 +1,6 @@
 import CityWidgets from './components/CityWidgets.jsx'
 import Countdown from './components/Countdown.jsx'
-import { TICKET_SALE } from './tripData.js'
+import { FLIGHTS, STAYS, TICKET_SALE } from './tripData.js'
 
 const dateFormatter = new Intl.DateTimeFormat('hu-HU', {
   year: 'numeric',
@@ -48,6 +48,38 @@ export default function App() {
         <section className="card" aria-labelledby="cities-title">
           <h2 id="cities-title">Helyi idő és időjárás</h2>
           <CityWidgets />
+        </section>
+
+        <section className="card" aria-labelledby="flights-title">
+          <h2 id="flights-title">Repülés</h2>
+          <ol className="trip-list">
+            {FLIGHTS.map(({ from, to, details }, i) => (
+              <li className="trip-item" key={`${from}-${to}`}>
+                <span className="trip-step">{i + 1}</span>
+                <span className="trip-name">
+                  {from} <span className="trip-arrow" aria-label="–">✈</span> {to}
+                </span>
+                <span className={details ? 'trip-details' : 'trip-details pending'}>
+                  {details ?? 'Részletek hamarosan'}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="card" aria-labelledby="stays-title">
+          <h2 id="stays-title">Airbnb</h2>
+          <ul className="trip-list">
+            {STAYS.map(({ city, details }) => (
+              <li className="trip-item" key={city}>
+                <span className="trip-step" aria-hidden="true">🏠</span>
+                <span className="trip-name">{city}</span>
+                <span className={details ? 'trip-details' : 'trip-details pending'}>
+                  {details ?? 'Részletek hamarosan'}
+                </span>
+              </li>
+            ))}
+          </ul>
         </section>
       </main>
 

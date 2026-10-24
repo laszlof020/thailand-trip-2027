@@ -9,3 +9,17 @@ export const CITIES = [
   { name: 'Phuket', flag: '🇹🇭', timeZone: 'Asia/Bangkok', lat: 7.8804, lon: 98.3923 },
   { name: 'Bangkok', flag: '🇹🇭', timeZone: 'Asia/Bangkok', lat: 13.7563, lon: 100.5018 },
 ]
+
+// details: null until known → shown as "hamarosan"
+export const FLIGHTS = [
+  { from: 'Budapest', to: 'Shanghai', details: null },
+  { from: 'Shanghai', to: 'Phuket', details: null },
+  { from: 'Phuket', to: 'Bangkok', details: null },
+  { from: 'Bangkok', to: 'Guangzhou', details: null },
+  { from: 'Guangzhou', to: 'Budapest', details: null },
+]
+
+export const STAYS = [
+  { city: 'Phuket', details: null },
+  { city: 'Bangkok', details: null },
+]

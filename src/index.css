@@ -257,6 +257,71 @@ main {
   }
 }
 
+.trip-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.trip-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+}
+
+.trip-item:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.trip-item:last-child {
+  padding-bottom: 0;
+}
+
+.trip-step {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(46, 196, 182, 0.15);
+  color: var(--teal);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.trip-name {
+  flex: 1 1 auto;
+  white-space: nowrap;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.trip-arrow {
+  margin: 0 6px;
+  color: var(--gold);
+}
+
+.trip-details {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.trip-details.pending {
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
 .footer {
   margin-top: 48px;
   text-align: center;
@@ -276,5 +341,9 @@ main {
   .countdown {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+  }
+
+  .trip-details {
+    margin-left: 48px;
   }
 }

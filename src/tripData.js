@@ -157,51 +157,6 @@ export const STAYS = [
   },
 ]
 
-export const ITINERARY = [
-  {
-    date: '2027. jan. 13., szerda',
-    place: 'Budapest',
-    items: ['11:30 – Indulás Budapestről (MU8640)'],
-  },
-  {
-    date: '2027. jan. 14., csütörtök',
-    place: 'Shanghai → Phuket',
-    items: [
-      '05:25 – Érkezés Shanghaiba (PVG), 4 óra 35 perc átszállás',
-      '10:00 – Tovább Phuketre (MU621)',
-      '14:30 – Érkezés Phuketre, 15:00-tól bejelentkezés a villába',
-    ],
-  },
-  {
-    date: 'jan. 14. – jan. 20.',
-    place: 'Phuket · 6 éjszaka',
-    items: ['Strandok: Rawai, Yanui, Nai Harn', 'Szigettúra a Chalong mólóról', 'Naplemente a Promthep-foknál'],
-  },
-  {
-    date: '2027. jan. 20., szerda',
-    place: 'Phuket → Bangkok',
-    items: ['13:00-ig kijelentkezés', 'Belföldi járat Bangkokba (időpont hamarosan)', '14:00 után bejelentkezés Bangkokban'],
-  },
-  {
-    date: 'jan. 20. – jan. 27.',
-    place: 'Bangkok · 7 éjszaka',
-    items: [
-      'Utcai ételek a Banthat Thong úton',
-      'Siam Paragon és MBK bevásárlóközpont',
-      'Chatuchak hétvégi piac (jan. 23–24., szombat–vasárnap)',
-    ],
-  },
-  {
-    date: '2027. jan. 27., szerda',
-    place: 'Bangkok → Guangzhou',
-    items: ['11:00-ig kijelentkezés', '15:05 – Indulás Bangkokból (CZ5096)', '18:55 – Érkezés Guangzhouba, 6 óra 35 perc átszállás'],
-  },
-  {
-    date: '2027. jan. 28., csütörtök',
-    place: 'Guangzhou → Budapest',
-    items: ['01:30 – Indulás Guangzhouból (CZ649)', '06:30 – Érkezés Budapestre 🏠'],
-  },
-]
 
 export const DEADLINES = [
   { date: TICKET_SALE, label: '✈️ Jegyvásárlás időpontja' },

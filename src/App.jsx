@@ -2,7 +2,6 @@ import Budget from './components/Budget.jsx'
 import CityWidgets from './components/CityWidgets.jsx'
 import Countdown from './components/Countdown.jsx'
 import Flights from './components/Flights.jsx'
-import Itinerary from './components/Itinerary.jsx'
 import Stays from './components/Stays.jsx'
 import { DEADLINES, ESSENTIALS, TICKET_SALE } from './tripData.js'
 
@@ -17,7 +16,6 @@ const dateFormatter = new Intl.DateTimeFormat('hu-HU', {
 })
 
 const NAV = [
-  ['utiterv', 'Útiterv'],
   ['repules', 'Repülés'],
   ['airbnb', 'Airbnb'],
   ['koltsegvetes', 'Költségvetés'],
@@ -67,11 +65,6 @@ export default function App() {
         <section className="card" aria-labelledby="cities-title">
           <h2 id="cities-title">Helyi idő és időjárás</h2>
           <CityWidgets />
-        </section>
-
-        <section className="card" id="utiterv" aria-labelledby="itinerary-title">
-          <h2 id="itinerary-title">Útiterv</h2>
-          <Itinerary />
         </section>
 
         <section className="card" id="repules" aria-labelledby="flights-title">

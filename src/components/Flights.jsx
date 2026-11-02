@@ -65,6 +65,7 @@ export default function Flights() {
           {journey.status === 'tbd' && (
             <p className="journey-note">Járatszám és pontos időpont hamarosan.</p>
           )}
+          {journey.note && <p className="journey-note">ℹ️ {journey.note}</p>}
         </article>
       ))}
     </div>

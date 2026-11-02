@@ -21,9 +21,10 @@ export const JOURNEYS = [
     route: 'Budapest → Shanghai → Phuket',
     date: '2027. jan. 13., szerda',
     airline: 'China Eastern · üzemeltető: Shanghai Airlines',
-    totalDuration: '21 óra',
+    totalDuration: '28 óra 30 perc',
     pricePerPerson: 130000,
     status: 'planned',
+    note: 'Phuketre 22:00-kor érkezünk, a villába éjfélig lehet bejelentkezni. Érdemes előre lefoglalni a villa reptéri transzferét, és jelezni a házigazdának a késői érkezést.',
     segments: [
       {
         flight: 'MU8640',
@@ -31,12 +32,12 @@ export const JOURNEYS = [
         to: { code: 'PVG', name: 'Shanghai Pudong', time: '05:25', date: 'jan. 14.' },
         duration: '10 óra 55 perc',
       },
-      { layover: '4 óra 35 perc átszállás Shanghaiban (PVG)' },
+      { layover: '11 óra 55 perc átszállás Shanghaiban (PVG)' },
       {
-        flight: 'MU621',
-        from: { code: 'PVG', name: 'Shanghai Pudong', time: '10:00', date: 'jan. 14.' },
-        to: { code: 'HKT', name: 'Phuket', time: '14:30', date: 'jan. 14.' },
-        duration: '5 óra 30 perc',
+        flight: 'MU8647',
+        from: { code: 'PVG', name: 'Shanghai Pudong', time: '17:20', date: 'jan. 14.' },
+        to: { code: 'HKT', name: 'Phuket', time: '22:00', date: 'jan. 14.' },
+        duration: '5 óra 40 perc',
       },
     ],
   },
@@ -162,7 +163,7 @@ export const DEADLINES = [
   { date: TICKET_SALE, label: '✈️ Jegyvásárlás időpontja' },
   { date: new Date('2026-12-15T23:59:00+01:00'), label: '🏝️ Phuketi villa: ingyenes lemondás határideje' },
   { date: new Date('2027-01-15T23:59:00+01:00'), label: '🏙️ Bangkoki szállás: ingyenes lemondás határideje' },
-  { date: new Date('2027-01-11T14:30:00+07:00'), label: '📝 TDAC kitöltése legkorábban (72 órával érkezés előtt)' },
+  { date: new Date('2027-01-11T22:00:00+07:00'), label: '📝 TDAC kitöltése legkorábban (72 órával érkezés előtt)' },
   { date: new Date('2027-01-13T11:30:00+01:00'), label: '🛫 Indulás Budapestről' },
 ]
 

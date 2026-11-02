@@ -24,7 +24,7 @@ export const JOURNEYS = [
     totalDuration: '28 óra 30 perc',
     pricePerPerson: 130000,
     status: 'planned',
-    note: 'Phuketre 22:00-kor érkezünk, a villába éjfélig lehet bejelentkezni. Érdemes előre lefoglalni a villa reptéri transzferét, és jelezni a házigazdának a késői érkezést.',
+    note: 'Phuketre 22:00-kor érkezünk, a szállásra viszont csak 22:00-ig lehet bejelentkezni. A késői érkezést előre egyeztetni kell a házigazdával, és érdemes reptéri transzfert foglalni.',
     segments: [
       {
         flight: 'MU8640',
@@ -88,7 +88,7 @@ export const JOURNEYS = [
 ]
 
 const phuketPhoto = (id) =>
-  `https://a0.muscache.com/im/pictures/hosting/Hosting-1135447160267369358/original/${id}.jpeg?im_w=720`
+  `https://a0.muscache.com/im/pictures/hosting/Hosting-1618651335140773205/original/${id}.jpeg?im_w=720`
 const bangkokPhoto = (id) =>
   `https://a0.muscache.com/im/pictures/hosting/Hosting-1802134419598085469/original/${id}.jpeg?im_w=720`
 
@@ -97,31 +97,31 @@ export const STAYS = [
   {
     id: 'phuket',
     city: 'Phuket',
-    name: 'Phuket Pool Villa 3',
-    area: 'Rawai, Phuket déli része',
+    name: 'Sorház 3 hálószobával – Supalai City Hill',
+    area: 'Ratsada, Phuket Town mellett',
     dates: '2027. jan. 14. – jan. 20.',
     nights: 6,
-    totalPrice: 280000,
-    priceNote: 'Az Airbnb jelenleg 276 751 Ft-ot mutat erre az időszakra.',
-    url: 'https://www.airbnb.com/rooms/1135447160267369358?adults=3&check_in=2027-01-14&check_out=2027-01-20',
+    totalPrice: 240820,
+    priceNote: 'Az Airbnb által mutatott ár erre az időszakra, 3 főre.',
+    warning:
+      'Bejelentkezni csak 22:00-ig lehet, mi viszont 22:00-kor szállunk le Phuketen, és a reptérről még kb. 40–50 perc az út. Foglalás előtt egyeztetni kell a házigazdával a késői érkezésről.',
+    url: 'https://www.airbnb.com/rooms/1618651335140773205?adults=3&check_in=2027-01-14&check_out=2027-01-20',
     photos: [
-      'c2024afa-f824-4a5a-81b6-d4186c403a7c',
-      '0c34a1ad-02ad-41af-885c-e6b6b9c0f219',
-      '71948b78-1eea-4298-aa3b-6e5d223aa90b',
-      '1b06e500-e8a2-450c-b94d-fa376ac47f76',
-      '79108ad7-9e42-4b0f-a488-4a81b8b866f8',
+      '76112b3e-bede-4a2f-af9d-fde28413b03f',
+      'fda5b0fe-1535-4162-824b-034ea3243078',
+      '36462dff-6125-4cdf-8aeb-a8bd30bba26a',
+      '7db5e98b-d715-4cab-9285-02b03fcb7d77',
+      'c18d302f-124a-4d4e-9798-061a1e29e5b8',
     ].map(phuketPhoto),
-    facts: ['Teljes villa', 'max. 6 vendég', '3 hálószoba', '3 queen ágy', '3 fürdőszoba'],
+    facts: ['Teljes sorház', 'max. 5 vendég', '3 hálószoba', '3 ágy', '3 fürdőszoba'],
     description:
-      'Modern, teljesen berendezett villa saját medencével és jakuzzival. Felszerelt konyha, nappali okostévével, légkondi minden szobában. Kb. 5 percre a Chalong mólótól (szigettúrák), 10 percre a Rawai, Yanui és Nai Harn strandtól, 15 percre a Promthep-foktól, ahol Phuket legszebb naplementéje látható.',
-    amenities: ['Saját medence', 'Jakuzzi', 'Légkondi', 'Konyha', 'Wi-Fi', 'Ingyenes parkolás', 'Kilátás a tengerre'],
+      'Tágas, háromhálószobás sorház a Supalai City Hill lakóparkban, Ratsadában, Phuket Town közelében. Családoknak és baráti társaságoknak ajánlják, rövid és hosszabb tartózkodásra is. A strandok (pl. Patong, Kata) innen autóval vagy Grabbal érhetők el.',
+    amenities: ['Légkondi', 'Konyha', 'Mosógép', 'Wi-Fi', 'Tévé', 'Külön munkaterület', 'Ingyenes parkolás'],
     rules: [
-      'Bejelentkezés 15:00 – 24:00, kijelentkezés 13:00-ig',
-      'Áram külön fizetendő: 6 THB / kWh',
-      'Kaució: 500 THB / éj (6 éjre 3 000 THB), készpénzben érkezéskor, távozáskor visszajár',
-      'Reptéri transzfer kérhető: 700 THB (szedán), 800 THB (SUV), 1 000 THB (kisbusz)',
+      'Bejelentkezés 15:00 – 22:00, kijelentkezés 12:00-ig',
+      'A hirdetésben nincs bejelölve a meleg víz és az alapfelszereltség (törölköző, ágynemű), érdemes rákérdezni',
+      'Az épületben lépcsőzni kell',
       'Ingyenes lemondás 2026. dec. 15-ig, részleges visszatérítés 2027. jan. 7-ig',
-      'Bent tilos a dohányzás',
     ],
     rating: 'Még nincs értékelése (új hirdetés)',
   },
@@ -161,7 +161,7 @@ export const STAYS = [
 
 export const DEADLINES = [
   { date: TICKET_SALE, label: '✈️ Jegyvásárlás időpontja' },
-  { date: new Date('2026-12-15T23:59:00+01:00'), label: '🏝️ Phuketi villa: ingyenes lemondás határideje' },
+  { date: new Date('2026-12-15T23:59:00+01:00'), label: '🏝️ Phuketi szállás: ingyenes lemondás határideje' },
   { date: new Date('2027-01-15T23:59:00+01:00'), label: '🏙️ Bangkoki szállás: ingyenes lemondás határideje' },
   { date: new Date('2027-01-11T22:00:00+07:00'), label: '📝 TDAC kitöltése legkorábban (72 órával érkezés előtt)' },
   { date: new Date('2027-01-13T11:30:00+01:00'), label: '🛫 Indulás Budapestről' },
@@ -187,7 +187,7 @@ export const ESSENTIALS = [
   },
   {
     title: 'Készpénz (thai baht)',
-    text: 'A phuketi kauciót (3 000 THB) és az áramot készpénzben kell fizetni. Érdemes kártyával készpénzt felvenni vagy helyben váltani.',
+    text: 'Taxihoz, piacokon és utcai ételstandoknál sokszor csak készpénzzel lehet fizetni. Érdemes kártyával készpénzt felvenni vagy helyben váltani.',
   },
   {
     title: 'Hasznos appok',

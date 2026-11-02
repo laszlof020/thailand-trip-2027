@@ -5,9 +5,6 @@ export const HOME_TIME_ZONE = 'Europe/Budapest'
 
 export const TRAVELERS = 3
 
-// Rough exchange rate used only for converting THB extras into forint
-export const HUF_PER_THB = 10.5
-
 export const CITIES = [
   { name: 'Budapest', flag: '🇭🇺', timeZone: 'Europe/Budapest', lat: 47.4979, lon: 19.0402 },
   { name: 'Shanghai', flag: '🇨🇳', timeZone: 'Asia/Shanghai', lat: 31.2304, lon: 121.4737 },
@@ -214,18 +211,6 @@ export const DEADLINES = [
   { date: new Date('2027-01-13T11:30:00+01:00'), label: '🛫 Indulás Budapestről' },
 ]
 
-// Estimated per-person costs in HUF; adjust as plans firm up
-export const ESTIMATES = [
-  { label: 'Étkezés', perPerson: 8000 * 14, note: 'kb. 8 000 Ft / nap, 14 napra' },
-  { label: 'Helyi közlekedés', perPerson: 3000 * 14, note: 'Grab, BTS/MRT, reptéri transzferek' },
-  { label: 'Programok, kirándulások', perPerson: 60000, note: 'pl. szigettúra, belépők' },
-  { label: 'Utasbiztosítás', perPerson: 20000, note: '16 napra' },
-  {
-    label: 'Áram a phuketi villában és tartalék',
-    perPerson: Math.round((1500 * HUF_PER_THB) / TRAVELERS) + 20000,
-    note: 'áram kb. 1 500 THB összesen (légkondi), plusz 20 000 Ft tartalék',
-  },
-]
 
 export const ESSENTIALS = [
   {

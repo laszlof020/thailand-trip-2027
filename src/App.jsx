@@ -1,6 +1,10 @@
+import Budget from './components/Budget.jsx'
 import CityWidgets from './components/CityWidgets.jsx'
 import Countdown from './components/Countdown.jsx'
-import { FLIGHTS, STAYS, TICKET_SALE } from './tripData.js'
+import Flights from './components/Flights.jsx'
+import Itinerary from './components/Itinerary.jsx'
+import Stays from './components/Stays.jsx'
+import { DEADLINES, ESSENTIALS, TICKET_SALE } from './tripData.js'
 
 const dateFormatter = new Intl.DateTimeFormat('hu-HU', {
   year: 'numeric',
@@ -12,17 +16,32 @@ const dateFormatter = new Intl.DateTimeFormat('hu-HU', {
   timeZone: 'Europe/Budapest',
 })
 
+const NAV = [
+  ['utiterv', 'Útiterv'],
+  ['repules', 'Repülés'],
+  ['airbnb', 'Airbnb'],
+  ['koltsegvetes', 'Költségvetés'],
+  ['tudnivalok', 'Tudnivalók'],
+]
+
 export default function App() {
   return (
     <div className="page">
       <header className="hero">
-        <p className="eyebrow">🇹🇭 Közös utazás · 2027</p>
+        <p className="eyebrow">🇹🇭 Közös utazás · 2027. január 13–28.</p>
         <h1>
           Thailand Trip <span>2027</span>
         </h1>
         <p className="lead">
           Itt gyűjtjük össze az utazással kapcsolatos összes fontos információt.
         </p>
+        <nav className="nav" aria-label="Szekciók">
+          {NAV.map(([id, label]) => (
+            <a key={id} href={`#${id}`}>
+              {label}
+            </a>
+          ))}
+        </nav>
       </header>
 
       <main>
@@ -34,14 +53,14 @@ export default function App() {
         <section className="card info-card" aria-labelledby="info-title">
           <h2 id="info-title">Fontos időpontok</h2>
           <dl className="info-list">
-            <div className="info-row">
-              <dt>✈️ Jegyvásárlás időpontja</dt>
-              <dd>
-                <time dateTime={TICKET_SALE.toISOString()}>
-                  {dateFormatter.format(TICKET_SALE)}
-                </time>
-              </dd>
-            </div>
+            {DEADLINES.map(({ date, label }) => (
+              <div className="info-row" key={label}>
+                <dt>{label}</dt>
+                <dd>
+                  <time dateTime={date.toISOString()}>{dateFormatter.format(date)}</time>
+                </dd>
+              </div>
+            ))}
           </dl>
         </section>
 
@@ -50,36 +69,40 @@ export default function App() {
           <CityWidgets />
         </section>
 
-        <section className="card" aria-labelledby="flights-title">
-          <h2 id="flights-title">Repülés</h2>
-          <ol className="trip-list">
-            {FLIGHTS.map(({ from, to, details }, i) => (
-              <li className="trip-item" key={`${from}-${to}`}>
-                <span className="trip-step">{i + 1}</span>
-                <span className="trip-name">
-                  {from} <span className="trip-arrow" aria-label="–">✈</span> {to}
-                </span>
-                <span className={details ? 'trip-details' : 'trip-details pending'}>
-                  {details ?? 'Részletek hamarosan'}
-                </span>
-              </li>
-            ))}
-          </ol>
+        <section className="card" id="utiterv" aria-labelledby="itinerary-title">
+          <h2 id="itinerary-title">Útiterv</h2>
+          <Itinerary />
         </section>
 
-        <section className="card" aria-labelledby="stays-title">
+        <section className="card" id="repules" aria-labelledby="flights-title">
+          <h2 id="flights-title">Repülés</h2>
+          <Flights />
+        </section>
+
+        <section className="card" id="airbnb" aria-labelledby="stays-title">
           <h2 id="stays-title">Airbnb</h2>
-          <ul className="trip-list">
-            {STAYS.map(({ city, details }) => (
-              <li className="trip-item" key={city}>
-                <span className="trip-step" aria-hidden="true">🏠</span>
-                <span className="trip-name">{city}</span>
-                <span className={details ? 'trip-details' : 'trip-details pending'}>
-                  {details ?? 'Részletek hamarosan'}
-                </span>
-              </li>
+          <Stays />
+        </section>
+
+        <section className="card" id="koltsegvetes" aria-labelledby="budget-title">
+          <h2 id="budget-title">Költségvetés</h2>
+          <Budget />
+        </section>
+
+        <section className="card" id="tudnivalok" aria-labelledby="essentials-title">
+          <h2 id="essentials-title">Tudnivalók indulás előtt</h2>
+          <div className="essentials">
+            {ESSENTIALS.map(({ title, text }) => (
+              <article className="essential" key={title}>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
             ))}
-          </ul>
+          </div>
+          <p className="budget-footnote">
+            A beutazási szabályok változhatnak, indulás előtt érdemes ellenőrizni őket a thai és a kínai
+            hatóságok oldalán.
+          </p>
         </section>
       </main>
 

@@ -3,8 +3,7 @@ import { JOURNEYS, STAYS, TRAVELERS } from '../tripData.js'
 
 const flights = JOURNEYS.map((journey) => ({
   label: journey.route,
-  perPerson: journey.pricePerPerson,
-  note: journey.priceIsEstimate ? 'becsült ár' : null,
+  perPerson: journey.totalPrice / TRAVELERS,
 }))
 
 const stays = STAYS.map((stay) => ({
@@ -86,8 +85,8 @@ export default function Budget() {
         </table>
       </div>
       <p className="budget-footnote">
-        A repülőjegyárak fejenként, az Airbnb-árak a teljes szállásra értendők, ezeket {TRAVELERS} főre
-        osztottuk.
+        A repülőjegyek a végleges foglalás szerinti árak. Az Airbnb-árak a teljes szállásra értendők, az
+        Airbnb által most mutatott összegek. Minden tételt {TRAVELERS} főre osztottunk.
       </p>
     </>
   )

@@ -1,5 +1,5 @@
 import { formatHuf } from '../format.js'
-import { JOURNEYS } from '../tripData.js'
+import { JOURNEYS, TRAVELERS } from '../tripData.js'
 
 function Segment({ segment }) {
   if (segment.layover) {
@@ -50,11 +50,11 @@ export default function Flights() {
               </p>
             </div>
             <div className="journey-price">
-              <span className="price-value">
-                {journey.priceIsEstimate && 'kb. '}
-                {formatHuf(journey.pricePerPerson)}
-              </span>
+              <span className="price-value">{formatHuf(journey.totalPrice / TRAVELERS)}</span>
               <span className="price-unit">/ fő</span>
+              <span className="price-total">
+                {formatHuf(journey.totalPrice)} összesen ({TRAVELERS} fő)
+              </span>
             </div>
           </header>
           <ol className="segments">
@@ -62,8 +62,15 @@ export default function Flights() {
               <Segment segment={segment} key={i} />
             ))}
           </ol>
-          {journey.status === 'tbd' && (
-            <p className="journey-note">Járatszám és pontos időpont hamarosan.</p>
+          {journey.baggage && (
+            <div className="baggage">
+              <span className="baggage-title">🧳 Poggyász fejenként</span>
+              <ul className="chips chips-muted">
+                {journey.baggage.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           )}
           {journey.note && <p className="journey-note">ℹ️ {journey.note}</p>}
         </article>

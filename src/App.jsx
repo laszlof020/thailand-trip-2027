@@ -3,7 +3,7 @@ import CityWidgets from './components/CityWidgets.jsx'
 import Countdown from './components/Countdown.jsx'
 import Flights from './components/Flights.jsx'
 import Stays from './components/Stays.jsx'
-import { DEADLINES, ESSENTIALS, TICKET_SALE } from './tripData.js'
+import { DEADLINES, DEPARTURE, ESSENTIALS } from './tripData.js'
 
 const dateFormatter = new Intl.DateTimeFormat('hu-HU', {
   year: 'numeric',
@@ -26,7 +26,7 @@ export default function App() {
   return (
     <div className="page">
       <header className="hero">
-        <p className="eyebrow">🇹🇭 Közös utazás · 2027. január 13–28.</p>
+        <p className="eyebrow">🇹🇭 Közös utazás · 2027. január 11–26.</p>
         <h1>
           Thailand Trip <span>2027</span>
         </h1>
@@ -44,14 +44,14 @@ export default function App() {
 
       <main>
         <section className="card countdown-card" aria-labelledby="countdown-title">
-          <h2 id="countdown-title">Visszaszámlálás a jegyvásárlásig</h2>
-          <Countdown target={TICKET_SALE} />
+          <h2 id="countdown-title">Visszaszámlálás az indulásig</h2>
+          <Countdown target={DEPARTURE} />
         </section>
 
         <section className="card info-card" aria-labelledby="info-title">
           <h2 id="info-title">Fontos időpontok</h2>
           <dl className="info-list">
-            {DEADLINES.map(({ date, label }) => (
+            {[...DEADLINES].sort((a, b) => a.date - b.date).map(({ date, label }) => (
               <div className="info-row" key={label}>
                 <dt>{label}</dt>
                 <dd>

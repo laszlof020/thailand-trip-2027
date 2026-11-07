@@ -30,7 +30,7 @@ export default function Countdown({ target }) {
   if (remaining.done) {
     return (
       <p className="countdown-done" role="status">
-        🎉 Elindult a jegyvásárlás! Hajrá!
+        ✈️ Elindultunk! Jó utat, Thaiföld, jövünk!
       </p>
     )
   }

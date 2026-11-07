@@ -93,7 +93,7 @@ export const JOURNEYS = [
 
 const photo = (path) => `https://a0.muscache.com/im/pictures/${path}?im_w=720`
 
-// Booked stays; totalPrice is for the whole group in HUF (null until known)
+// Booked stays; totalPrice is for the whole group in HUF
 export const STAYS = [
   {
     id: 'phuket',
@@ -102,7 +102,7 @@ export const STAYS = [
     area: 'Talat Nuea, Phuket Town',
     dates: '2027. jan. 12. – jan. 19.',
     nights: 7,
-    totalPrice: null,
+    totalPrice: 146505,
     url: 'https://www.airbnb.com/rooms/782895140339552502',
     mapUrl: 'https://maps.app.goo.gl/EAUwe45oB8H3kUtA7',
     photos: [
@@ -132,7 +132,7 @@ export const STAYS = [
     area: 'Bang Phlat (Pinklao), Bangkok',
     dates: '2027. jan. 19. – jan. 25.',
     nights: 6,
-    totalPrice: null,
+    totalPrice: 126450,
     url: 'https://www.airbnb.com/rooms/41051440',
     mapUrl: 'https://maps.app.goo.gl/gQUVnn5czCokbM677',
     photos: [

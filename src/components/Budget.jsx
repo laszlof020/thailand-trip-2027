@@ -88,8 +88,8 @@ export default function Budget() {
         </table>
       </div>
       <p className="budget-footnote">
-        A repülőjegyek a végleges foglalás szerinti árak, {TRAVELERS} főre osztva. A szállások árát
-        megadásuk után számoljuk bele az összegbe.
+        Minden ár a végleges foglalás szerinti, a teljes csoportra fizetett összeg {TRAVELERS} főre
+        osztva.
       </p>
     </>
   )

@@ -190,3 +190,70 @@ export const ESSENTIALS = [
     text: 'Grab (taxi és ételrendelés), Google Maps, Google Fordító, és egy thai eSIM vagy helyi SIM-kártya a mobilnethez.',
   },
 ]
+
+// Day-by-day plan; times are local. `events` are fixed bookings,
+// `programs` are what we plan to do that day (add new ideas here).
+export const TRIP_DAYS = [
+  {
+    date: '2027-01-11',
+    place: 'travel',
+    route: 'Budapest → Shanghai',
+    events: [{ time: '11:30', text: 'Indulás Budapestről Shanghaiba (MU8640)' }],
+    programs: [],
+  },
+  {
+    date: '2027-01-12',
+    place: 'travel',
+    route: 'Shanghai → Phuket',
+    events: [
+      { time: '05:25', text: 'Érkezés Shanghaiba (PVG), 11 óra 55 perc átszállás' },
+      { time: '17:20', text: 'Indulás Phuketre (MU8647)' },
+      { time: '22:00', text: 'Érkezés Phuketre, transzfer a szállásra (kb. 40–50 perc)' },
+    ],
+    programs: [],
+  },
+  { date: '2027-01-13', place: 'phuket', events: [], programs: [] },
+  { date: '2027-01-14', place: 'phuket', events: [], programs: [] },
+  { date: '2027-01-15', place: 'phuket', events: [], programs: [] },
+  { date: '2027-01-16', place: 'phuket', events: [], programs: [] },
+  { date: '2027-01-17', place: 'phuket', events: [], programs: [] },
+  { date: '2027-01-18', place: 'phuket', events: [], programs: [] },
+  {
+    date: '2027-01-19',
+    place: 'travel',
+    route: 'Phuket → Bangkok',
+    events: [
+      { time: '07:30', text: 'Kijelentkezés, indulás a phuketi reptérre' },
+      { time: '10:00', text: 'Indulás Bangkokba (FD4125)' },
+      { time: '11:25', text: 'Érkezés Bangkokba (BKK)' },
+      { time: '15:00', text: 'Bejelentkezés a bangkoki szállásra' },
+    ],
+    programs: [],
+  },
+  { date: '2027-01-20', place: 'bangkok', events: [], programs: [] },
+  { date: '2027-01-21', place: 'bangkok', events: [], programs: [] },
+  { date: '2027-01-22', place: 'bangkok', events: [], programs: [] },
+  { date: '2027-01-23', place: 'bangkok', events: [], programs: [] },
+  { date: '2027-01-24', place: 'bangkok', events: [], programs: [] },
+  {
+    date: '2027-01-25',
+    place: 'travel',
+    route: 'Bangkok → Guangzhou',
+    events: [
+      { time: '11:00', text: 'Kijelentkezés a bangkoki szállásról' },
+      { time: '18:05', text: 'Indulás Guangzhouba (CZ8024)' },
+      { time: '22:00', text: 'Érkezés Guangzhouba (CAN), 3 óra 30 perc átszállás' },
+    ],
+    programs: [],
+  },
+  {
+    date: '2027-01-26',
+    place: 'travel',
+    route: 'Guangzhou → Budapest',
+    events: [
+      { time: '01:30', text: 'Indulás Budapestre (CZ649)' },
+      { time: '06:30', text: 'Érkezés haza, Budapestre 🏠' },
+    ],
+    programs: [],
+  },
+]

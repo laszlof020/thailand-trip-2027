@@ -3,6 +3,7 @@ import Budget from './components/Budget.jsx'
 import CityWidgets from './components/CityWidgets.jsx'
 import Countdown from './components/Countdown.jsx'
 import Flights from './components/Flights.jsx'
+import Planner from './components/Planner.jsx'
 import Stays from './components/Stays.jsx'
 import { DEADLINES, DEPARTURE, ESSENTIALS } from './tripData.js'
 
@@ -74,14 +75,6 @@ function Essentials() {
         hatóságok oldalán.
       </p>
     </>
-  )
-}
-
-function Planner() {
-  return (
-    <p className="placeholder">
-      🗺️ Itt fogjuk közösen megtervezni a programokat és a napokat. Hamarosan!
-    </p>
   )
 }
 

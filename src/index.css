@@ -317,12 +317,107 @@ main {
   background: linear-gradient(90deg, var(--gold), var(--coral));
 }
 
-.placeholder {
+/* Planner */
+.days {
+  list-style: none;
   margin: 0;
-  padding: 24px 0;
-  text-align: center;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.day {
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--muted);
+}
+
+.day-travel {
+  border-left-color: var(--coral);
+}
+
+.day-phuket {
+  border-left-color: var(--teal);
+}
+
+.day-bangkok {
+  border-left-color: var(--gold);
+}
+
+.day-today {
+  box-shadow: 0 0 0 2px var(--gold);
+}
+
+.day-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+
+.day-head h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.day-number {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: var(--muted);
-  font-size: 1.05rem;
+}
+
+.day-place {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.day-badge {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #1a1a1a;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.day-events,
+.day-programs {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+}
+
+.day-events li {
+  display: flex;
+  gap: 12px;
+  font-size: 0.95rem;
+}
+
+.day-time {
+  flex-shrink: 0;
+  width: 44px;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.day-programs li::before {
+  content: '• ';
+  color: var(--teal);
+}
+
+.day-empty {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 .page-title {

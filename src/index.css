@@ -535,6 +535,16 @@ section[id] {
   font-size: 0.9rem;
 }
 
+.stay-tip {
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(46, 196, 182, 0.12);
+  border: 1px solid rgba(46, 196, 182, 0.4);
+  color: #9fe9e1;
+  font-size: 0.9rem;
+}
+
 .chips {
   display: flex;
   flex-wrap: wrap;

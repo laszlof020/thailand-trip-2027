@@ -46,6 +46,7 @@ export default function Stays() {
             </p>
 
             {stay.warning && <p className="stay-warning">⚠️ {stay.warning}</p>}
+            {stay.tip && <p className="stay-tip">💡 {stay.tip}</p>}
 
             <ul className="chips">
               {stay.facts.map((fact) => (

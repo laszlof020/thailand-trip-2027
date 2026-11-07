@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import Budget from './components/Budget.jsx'
 import CityWidgets from './components/CityWidgets.jsx'
 import Countdown from './components/Countdown.jsx'
@@ -15,16 +16,9 @@ const dateFormatter = new Intl.DateTimeFormat('hu-HU', {
   timeZone: 'Europe/Budapest',
 })
 
-const NAV = [
-  ['repules', 'Repülés'],
-  ['airbnb', 'Airbnb'],
-  ['koltsegvetes', 'Költségvetés'],
-  ['tudnivalok', 'Tudnivalók'],
-]
-
-export default function App() {
+function Home() {
   return (
-    <div className="page">
+    <>
       <header className="hero">
         <p className="eyebrow">🇹🇭 Közös utazás · 2027. január 11–26.</p>
         <h1>
@@ -33,13 +27,6 @@ export default function App() {
         <p className="lead">
           Itt gyűjtjük össze az utazással kapcsolatos összes fontos információt.
         </p>
-        <nav className="nav" aria-label="Szekciók">
-          {NAV.map(([id, label]) => (
-            <a key={id} href={`#${id}`}>
-              {label}
-            </a>
-          ))}
-        </nav>
       </header>
 
       <main>
@@ -66,40 +53,121 @@ export default function App() {
           <h2 id="cities-title">Helyi idő és időjárás</h2>
           <CityWidgets />
         </section>
-
-        <section className="card" id="repules" aria-labelledby="flights-title">
-          <h2 id="flights-title">Repülés</h2>
-          <Flights />
-        </section>
-
-        <section className="card" id="airbnb" aria-labelledby="stays-title">
-          <h2 id="stays-title">Airbnb</h2>
-          <Stays />
-        </section>
-
-        <section className="card" id="koltsegvetes" aria-labelledby="budget-title">
-          <h2 id="budget-title">Költségvetés</h2>
-          <Budget />
-        </section>
-
-        <section className="card" id="tudnivalok" aria-labelledby="essentials-title">
-          <h2 id="essentials-title">Tudnivalók indulás előtt</h2>
-          <div className="essentials">
-            {ESSENTIALS.map(({ title, text }) => (
-              <article className="essential" key={title}>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
-          <p className="budget-footnote">
-            A beutazási szabályok változhatnak, indulás előtt érdemes ellenőrizni őket a thai és a kínai
-            hatóságok oldalán.
-          </p>
-        </section>
       </main>
+    </>
+  )
+}
 
-      <footer className="footer">Thailand Trip 2027 · ขอให้เดินทางปลอดภัย</footer>
-    </div>
+function Essentials() {
+  return (
+    <>
+      <div className="essentials">
+        {ESSENTIALS.map(({ title, text }) => (
+          <article className="essential" key={title}>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+      <p className="budget-footnote">
+        A beutazási szabályok változhatnak, indulás előtt érdemes ellenőrizni őket a thai és a kínai
+        hatóságok oldalán.
+      </p>
+    </>
+  )
+}
+
+function Planner() {
+  return (
+    <p className="placeholder">
+      🗺️ Itt fogjuk közösen megtervezni a programokat és a napokat. Hamarosan!
+    </p>
+  )
+}
+
+const PAGES = [
+  { path: 'tervezo', label: 'Tervező', title: 'Tervező', Content: Planner },
+  { path: 'repules', label: 'Repülés', title: 'Repülés', Content: Flights },
+  { path: 'airbnb', label: 'Airbnb', title: 'Airbnb', Content: Stays },
+  { path: 'koltsegvetes', label: 'Költségvetés', title: 'Költségvetés', Content: Budget },
+  { path: 'tudnivalok', label: 'Tudnivalók', title: 'Tudnivalók indulás előtt', Content: Essentials },
+]
+
+// Hash routes (#/repules) work on GitHub Pages without server rewrites
+function currentPath() {
+  return window.location.hash.replace(/^#\/?/, '')
+}
+
+function useHashPath() {
+  const [path, setPath] = useState(currentPath)
+
+  useEffect(() => {
+    const onChange = () => {
+      setPath(currentPath())
+      window.scrollTo(0, 0)
+    }
+    window.addEventListener('hashchange', onChange)
+    return () => window.removeEventListener('hashchange', onChange)
+  }, [])
+
+  return path
+}
+
+function Navbar({ path }) {
+  const linksRef = useRef(null)
+
+  // On narrow screens the links scroll sideways; keep the active one visible
+  useEffect(() => {
+    const active = linksRef.current?.querySelector('[aria-current="page"]')
+    active?.scrollIntoView({ block: 'nearest', inline: 'center' })
+  }, [path])
+
+  return (
+    <nav className="navbar" aria-label="Fő navigáció">
+      <div className="navbar-inner">
+        <a className="navbar-brand" href="#/" aria-current={path === '' ? 'page' : undefined}>
+          🇹🇭 Thailand Trip <span>2027</span>
+        </a>
+        <div className="navbar-links" ref={linksRef}>
+          {PAGES.map((page) => (
+            <a
+              key={page.path}
+              href={`#/${page.path}`}
+              aria-current={path === page.path ? 'page' : undefined}
+            >
+              {page.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+  )
+}
+
+export default function App() {
+  const path = useHashPath()
+  const page = PAGES.find((p) => p.path === path)
+
+  useEffect(() => {
+    document.title = page ? `${page.title} · Thailand Trip 2027` : 'Thailand Trip 2027'
+  }, [page])
+
+  return (
+    <>
+      <Navbar path={page ? page.path : ''} />
+      <div className="page">
+        {page ? (
+          <main>
+            <h1 className="page-title">{page.title}</h1>
+            <section className="card">
+              <page.Content />
+            </section>
+          </main>
+        ) : (
+          <Home />
+        )}
+        <footer className="footer">Thailand Trip 2027 · ขอให้เดินทางปลอดภัย</footer>
+      </div>
+    </>
   )
 }

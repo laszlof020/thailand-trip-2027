@@ -25,7 +25,7 @@ export const JOURNEYS = [
     totalPrice: 412330,
     status: 'booked',
     baggage: ['1 személyes tárgy', '1 × 8 kg kézipoggyász (20 × 40 × 55 cm)', '2 × 23 kg feladott poggyász'],
-    note: 'Phuketre 22:00-kor érkezünk, a szállásra viszont csak 22:00-ig lehet bejelentkezni. A késői érkezést előre egyeztetni kell a házigazdával, és érdemes reptéri transzfert foglalni.',
+    note: 'Phuketre 22:00-kor érkezünk, a szállás a reptértől kb. 40–50 perc. Érdemes előre lefoglalni a transzfert (vagy Grabbel menni), és jelezni a házigazdának a késői érkezést.',
     segments: [
       {
         flight: 'MU8640',
@@ -90,84 +90,74 @@ export const JOURNEYS = [
   },
 ]
 
-const phuketPhoto = (id) =>
-  `https://a0.muscache.com/im/pictures/hosting/Hosting-1618651335140773205/original/${id}.jpeg?im_w=720`
-const bangkokPhoto = (id) =>
-  `https://a0.muscache.com/im/pictures/hosting/Hosting-1802134419598085469/original/${id}.jpeg?im_w=720`
+const photo = (path) => `https://a0.muscache.com/im/pictures/${path}?im_w=720`
 
-// totalPrice is for the whole group in HUF
+// Booked stays; totalPrice is for the whole group in HUF (null until known)
 export const STAYS = [
   {
     id: 'phuket',
     city: 'Phuket',
-    name: 'Sorház 3 hálószobával – Supalai City Hill',
-    area: 'Ratsada, Phuket Town mellett',
+    name: '2 hálószobás lakás Phuket Townban',
+    area: 'Talat Nuea, Phuket Town',
     dates: '2027. jan. 12. – jan. 19.',
     nights: 7,
-    totalPrice: 279634,
-    priceNote: 'Az Airbnb által mutatott ár erre az időszakra, 3 főre.',
-    warning:
-      'Bejelentkezni csak 22:00-ig lehet, mi viszont 22:00-kor szállunk le Phuketen, és a reptérről még kb. 40–50 perc az út. Foglalás előtt egyeztetni kell a házigazdával a késői érkezésről.',
-    url: 'https://www.airbnb.com/rooms/1618651335140773205?adults=3&check_in=2027-01-12&check_out=2027-01-19',
+    totalPrice: null,
+    url: 'https://www.airbnb.com/rooms/782895140339552502',
+    mapUrl: 'https://maps.app.goo.gl/EAUwe45oB8H3kUtA7',
     photos: [
-      '76112b3e-bede-4a2f-af9d-fde28413b03f',
-      'fda5b0fe-1535-4162-824b-034ea3243078',
-      '36462dff-6125-4cdf-8aeb-a8bd30bba26a',
-      '7db5e98b-d715-4cab-9285-02b03fcb7d77',
-      'c18d302f-124a-4d4e-9798-061a1e29e5b8',
-    ].map(phuketPhoto),
-    facts: ['Teljes sorház', 'max. 5 vendég', '3 hálószoba', '3 ágy', '3 fürdőszoba'],
+      'hosting/Hosting-782895140339552502/original/a6cf5cbc-c4e5-44f6-a9b6-4f254aec1bc6.jpeg',
+      'hosting/Hosting-782895140339552502/original/beafffcb-e83a-465e-bf6b-98b2e8f594ea.jpeg',
+      'miso/Hosting-782895140339552502/original/3a5c6cea-1183-4c4c-b231-bc4c7fa3ee53.jpeg',
+      'miso/Hosting-782895140339552502/original/f277c357-2c8b-4eec-84d1-fb6ee07ccb49.jpeg',
+      'hosting/Hosting-782895140339552502/original/788985ed-d555-49ea-94e2-87d34e8b48c7.jpeg',
+    ].map(photo),
+    facts: ['Teljes lakás, 60 m²', 'max. 5 vendég', '2 hálószoba + nappali', 'king és queen ágy', '1 fürdőszoba'],
     description:
-      'Tágas, háromhálószobás sorház a Supalai City Hill lakóparkban, Ratsadában, Phuket Town közelében. Családoknak és baráti társaságoknak ajánlják, rövid és hosszabb tartózkodásra is. A strandok (pl. Patong, Kata) innen autóval vagy Grabbal érhetők el.',
-    amenities: ['Légkondi', 'Konyha', 'Mosógép', 'Wi-Fi', 'Tévé', 'Külön munkaterület', 'Ingyenes parkolás'],
+      'Tágas lakás egy csendes környéken, Phuket Townban, 24 órás biztonsági szolgálattal. Kb. 2 km az óvárostól, 600 m a Suan Luang parktól, 10 perc a Monkey Hilltól és 15 perc az Ao Yon strandtól. A 7-Eleven és helyi éttermek 500 m-re vannak, az épület kapujánál robogót lehet bérelni.',
+    amenities: ['Légkondi minden szobában', 'Felszerelt konyha', 'Mosógép', 'Wi-Fi', 'Ingyenes parkolás', 'Rezsi az árban'],
     rules: [
-      'Bejelentkezés 15:00 – 22:00, kijelentkezés 12:00-ig',
-      'A hirdetésben nincs bejelölve a meleg víz és az alapfelszereltség (törölköző, ágynemű), érdemes rákérdezni',
-      'Az épületben lépcsőzni kell',
-      'Ingyenes lemondás 2026. dec. 13-ig, részleges visszatérítés 2027. jan. 5-ig',
+      'Bejelentkezés 14:00 után, kijelentkezés 11:00-ig',
+      'A kulcsot az épület személyzete adja át. A késő esti (kb. 23:00 körüli) érkezést érdemes előre jelezni a házigazdának.',
+      'Csendes időszak 22:00 és 7:00 között',
+      'Bent tilos a dohányzás és az e-cigi (3 000 THB takarítási díj)',
+      'Elveszett kulcskártyáért 500 THB-t számolnak fel',
     ],
-    rating: 'Még nincs értékelése (új hirdetés)',
+    rating: '★ 4,73 (22 értékelés) · Superhost',
   },
   {
     id: 'bangkok',
     city: 'Bangkok',
-    name: 'Blue House Banthat Thong',
-    area: 'Pathum Wan, Bangkok belvárosa',
-    dates: '2027. jan. 19. – jan. 26.',
-    nights: 7,
-    totalPrice: 195588,
-    priceNote: 'Az Airbnb által mutatott ár erre az időszakra, 3 főre (heti kedvezménnyel).',
-    tip: 'A hetedik éjszaka (jan. 25–26.) a heti kedvezmény miatt csak kb. 9 000 Ft. Így a hazaútra induló 18:05-ös gépig maradhatunk a házban, nem kell a csomagokkal várni.',
-    url: 'https://www.airbnb.com/rooms/1802134419598085469?adults=3&check_in=2027-01-19&check_out=2027-01-26',
+    name: 'Négyszintes sorház Pinklaóban',
+    area: 'Bang Phlat (Pinklao), Bangkok',
+    dates: '2027. jan. 19. – jan. 25.',
+    nights: 6,
+    totalPrice: null,
+    url: 'https://www.airbnb.com/rooms/41051440',
+    mapUrl: 'https://maps.app.goo.gl/gQUVnn5czCokbM677',
     photos: [
-      '12943434-60c0-4896-8002-7e8e3f6a9202',
-      '595b64b8-58a3-40d8-aa38-32d171cf33f1',
-      'f9493fa8-637c-4631-8eb6-e01df4cd9f26',
-      'bab2b5f4-78e4-4799-8b3a-1697b5649a79',
-      'd1b38690-46d9-42da-9d6f-10d6fccf4c5d',
-    ].map(bangkokPhoto),
-    facts: ['Teljes ház (3 szint)', 'max. 11 vendég', '3 hálószoba', '6 ágy', '3 fürdőszoba'],
+      '351b5d8f-7154-403a-8b99-6d6c21d238e4.jpg',
+      '5e3cea1f-04a1-4fd5-9465-4f2d5bab697e.jpg',
+      '16e0bd03-2ff8-486d-ab6b-45064a06acd5.jpg',
+      '485db71f-daec-4efd-a59d-b2200f68377c.jpg',
+      'd8c2c00c-0025-4917-b281-f2c8ad018d7c.jpg',
+    ].map(photo),
+    facts: ['Teljes sorház (4 szint)', 'max. 10 vendég', '3 hálószoba', '2 king + 1 egyszemélyes ágy', '2 fürdőszoba'],
     description:
-      'Színes, loft hangulatú háromszintes ház egy csendes mellékutcában, a Wat Boromniwas környékén. Pár percre van a Banthat Thong út híres utcai ételstandjaitól, és kb. 10 percre az MBK-tól, a Siam Paragontól és a National Stadium BTS-állomástól. A földszinten nappali, nagy közös asztal, konyha és mosó-szárítógép van, fent a hálószobák és két erkély.',
-    amenities: ['Számkódos önálló bejutás', 'Légkondi minden szobában', 'Felszerelt konyha', 'Mosó- és szárítógép', 'Gyors Wi-Fi', 'Okostévé', 'Erkély'],
+      'Otthonos, négyszintes sorház Pinklaóban, a Chao Phraya folyó nyugati oldalán. A Central Pinklao bevásárlóközpont kb. 5 perc sétára van, a buszmegálló és a 7-Eleven 2 percre. Autóval vagy taxival kb. 10 perc a Királyi Palota, a Wat Pho és a Khaosan Road.',
+    amenities: ['Légkondi a hálószobákban', 'Melegvíz minden fürdőben', 'Wi-Fi', 'Netflix', 'Mikró, vízforraló, hűtő', 'Kanapéágy'],
     rules: [
-      'Bejelentkezés 14:00 után, kijelentkezés 11:00-ig',
-      'Csendes időszak 21:30 után, a házban nem lehet bulizni',
-      'Érkezéskor útlevelet kell mutatni (thai TM.30 bejelentés)',
-      'Ingyenes lemondás 2027. jan. 14-ig',
-      'Dohányozni csak a 3. emeleti erkélyen szabad (bírság 2 000 THB)',
-      'Közlekedéshez Grab, Bolt vagy tuk-tuk ajánlott',
+      'Bejelentkezés 15:00 után, kijelentkezés 11:00-ig (önálló bejutás kulcsdobozzal)',
+      'Főzni nem lehet, csak egyszerű ételeket elkészíteni',
+      'Parkolás nincs, a házban sok a lépcső',
+      'A hazaút napján (jan. 25.) 11:00-kor ki kell jelentkezni, a gép 18:05-kor indul. A csomagokat érdemes megbeszélni a házigazdával.',
     ],
-    rating: 'Új hirdetés · Superhost házigazda',
+    rating: '★ 4,74 (42 értékelés)',
   },
 ]
 
-
 export const DEADLINES = [
-  { date: new Date('2026-11-06T18:00:00+01:00'), label: '✅ Repülőjegyek megvéve' },
-  { date: new Date('2026-12-13T23:59:00+01:00'), label: '🏝️ Phuketi szállás: ingyenes lemondás határideje' },
+  { date: new Date('2026-11-06T18:00:00+01:00'), label: '✅ Repülőjegyek és szállások lefoglalva' },
   { date: new Date('2027-01-09T22:00:00+07:00'), label: '📝 TDAC kitöltése legkorábban (72 órával érkezés előtt)' },
-  { date: new Date('2027-01-14T23:59:00+01:00'), label: '🏙️ Bangkoki szállás: ingyenes lemondás határideje' },
   { date: DEPARTURE, label: '🛫 Indulás Budapestről' },
   { date: new Date('2027-01-26T06:30:00+01:00'), label: '🏠 Érkezés haza, Budapestre' },
 ]

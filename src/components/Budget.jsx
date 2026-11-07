@@ -8,11 +8,14 @@ const flights = JOURNEYS.map((journey) => ({
 
 const stays = STAYS.map((stay) => ({
   label: `${stay.city} (${stay.nights} éj)`,
-  perPerson: stay.totalPrice / TRAVELERS,
-  note: `${formatHuf(stay.totalPrice)} összesen, ${TRAVELERS} főre osztva`,
+  perPerson: stay.totalPrice ? stay.totalPrice / TRAVELERS : null,
+  note: stay.totalPrice
+    ? `${formatHuf(stay.totalPrice)} összesen, ${TRAVELERS} főre osztva`
+    : 'lefoglalva, ár hamarosan',
 }))
 
-const sum = (rows) => rows.reduce((total, row) => total + row.perPerson, 0)
+const sum = (rows) => rows.reduce((total, row) => total + (row.perPerson ?? 0), 0)
+const money = (value) => (value === null ? 'hamarosan' : formatHuf(value))
 
 function Group({ title, rows }) {
   const subtotal = sum(rows)
@@ -27,8 +30,8 @@ function Group({ title, rows }) {
             {row.label}
             {row.note && <span className="budget-note">{row.note}</span>}
           </th>
-          <td>{formatHuf(row.perPerson)}</td>
-          <td>{formatHuf(row.perPerson * TRAVELERS)}</td>
+          <td>{money(row.perPerson)}</td>
+          <td>{money(row.perPerson === null ? null : row.perPerson * TRAVELERS)}</td>
         </tr>
       ))}
       <tr className="budget-subtotal">
@@ -85,8 +88,8 @@ export default function Budget() {
         </table>
       </div>
       <p className="budget-footnote">
-        A repülőjegyek a végleges foglalás szerinti árak. Az Airbnb-árak a teljes szállásra értendők, az
-        Airbnb által most mutatott összegek. Minden tételt {TRAVELERS} főre osztottunk.
+        A repülőjegyek a végleges foglalás szerinti árak, {TRAVELERS} főre osztva. A szállások árát
+        megadásuk után számoljuk bele az összegbe.
       </p>
     </>
   )

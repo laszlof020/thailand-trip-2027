@@ -46,7 +46,6 @@ export default function Stays() {
             </p>
 
             {stay.warning && <p className="stay-warning">⚠️ {stay.warning}</p>}
-            {stay.tip && <p className="stay-tip">💡 {stay.tip}</p>}
 
             <ul className="chips">
               {stay.facts.map((fact) => (
@@ -72,16 +71,26 @@ export default function Stays() {
 
             <div className="stay-footer">
               <div>
-                <span className="price-value">{formatHuf(stay.totalPrice)}</span>
-                <span className="price-unit">
-                  {' '}
-                  összesen · {formatHuf(stay.totalPrice / TRAVELERS)} / fő
-                </span>
-                <p className="stay-price-note">{stay.priceNote}</p>
+                {stay.totalPrice ? (
+                  <>
+                    <span className="price-value">{formatHuf(stay.totalPrice)}</span>
+                    <span className="price-unit">
+                      {' '}
+                      összesen · {formatHuf(stay.totalPrice / TRAVELERS)} / fő
+                    </span>
+                  </>
+                ) : (
+                  <span className="price-unit">✅ Lefoglalva · ár hamarosan</span>
+                )}
               </div>
-              <a className="button" href={stay.url} target="_blank" rel="noreferrer">
-                Megnyitás az Airbnb-n ↗
-              </a>
+              <div className="stay-links">
+                <a className="button button-ghost" href={stay.mapUrl} target="_blank" rel="noreferrer">
+                  Térkép ↗
+                </a>
+                <a className="button" href={stay.url} target="_blank" rel="noreferrer">
+                  Airbnb ↗
+                </a>
+              </div>
             </div>
           </div>
         </article>
